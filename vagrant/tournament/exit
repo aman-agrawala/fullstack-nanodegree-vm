@@ -1,0 +1,12 @@
+                                 Table "public.matches"
+    Column    |  Type   |                           Modifiers                            
+--------------+---------+----------------------------------------------------------------
+ match_number | integer | not null default nextval('matches_match_number_seq'::regclass)
+ winner       | integer | not null default nextval('matches_winner_seq'::regclass)
+ loser        | integer | not null default nextval('matches_loser_seq'::regclass)
+Indexes:
+    "matches_pkey" PRIMARY KEY, btree (match_number)
+Foreign-key constraints:
+    "matches_loser_fkey" FOREIGN KEY (loser) REFERENCES players(id)
+    "matches_winner_fkey" FOREIGN KEY (winner) REFERENCES players(id)
+
